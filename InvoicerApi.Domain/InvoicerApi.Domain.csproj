@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\InvoicerApi.Data\InvoicerApi.Data.csproj" />
+      <ProjectReference Include="..\InvoicerApi.Models\InvoicerApi.Models.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Mapster.Async" Version="2.0.0" />
+      <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
+      <PackageReference Include="Mapster.EFCore" Version="5.1.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    </ItemGroup>
+
+</Project>
