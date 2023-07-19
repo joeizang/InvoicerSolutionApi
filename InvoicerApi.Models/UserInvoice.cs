@@ -8,17 +8,19 @@ public class UserInvoice : BaseModel
 
     public DateTimeOffset InvoiceDate { get; set; }
 
-    public decimal TotalInvoicedAmount { get; set; }
+    public Money TotalInvoicedAmount { get; set; }
 
     public InvoiceStatus InvoiceStatus { get; set; }
 
-    public string InvoiceReceiptient { get; set; } = string.Empty;
+    public InvoiceCategory InvoiceType { get; set; }
 
-    public string InvoiceReceiptientAddress { get; set; } = string.Empty;
+    public string InvoiceRecipient { get; set; } = string.Empty;
 
-    public string InvoiceReceiptientEmail { get; set; } = string.Empty;
+    public string InvoiceRecipientAddress { get; set; } = string.Empty;
+
+    public string InvoiceRecipientEmail { get; set; } = string.Empty;
     
-    public string InvoiceReceiptientPhoneNumber { get; set; } = string.Empty;
+    public string InvoiceRecipientPhoneNumber { get; set; } = string.Empty;
 
     public string InvoiceSpecialNote { get; set; } = string.Empty;
 
@@ -36,7 +38,15 @@ public class UserInvoice : BaseModel
 
     public ICollection<UserInvoiceItem> InvoiceItems { get; set; }
 
-    public ApplicationUser User { get; set; }
+    public ApplicationUser User { get; set; } = default!;
     
     public Guid UserId { get; set; }
+
+    public UserInvoice()
+    {
+        InvoiceItems = new List<UserInvoiceItem>();
+        TotalInvoicedAmount = new Money(0m, User.PreferredCurrency);
+        TaxAmount = new Money(0m, User.PreferredCurrency);
+        DiscountAmount = new Money(0m, User.PreferredCurrency);
+    }
 }

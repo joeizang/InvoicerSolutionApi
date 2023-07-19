@@ -8,6 +8,22 @@ public class PlatformServiceTypeConfiguration : IEntityTypeConfiguration<Platfor
 {
     public void Configure(EntityTypeBuilder<PlatformService> builder)
     {
-        throw new NotImplementedException();
+        builder.OwnsOne(x => x.Price, build =>
+        {
+            build.Property(x => x.Amount).HasPrecision(2);
+        });
+        
+        builder.HasOne(x => x.PlatformInvoice)
+            .WithMany(x => x.PlatformServices)
+            .HasForeignKey(x => x.PlatformInvoiceId)
+            .OnDelete(DeleteBehavior.Cascade);
+        builder.Property(x => x.Description)
+            .HasMaxLength(500)
+            .IsRequired(false);
+        builder.Property(x => x.Name)
+            .HasMaxLength(100)
+            .IsRequired();
+        builder.HasIndex(x => x.Name).IsUnique();
+        builder.HasKey(x => x.Id);
     }
 }

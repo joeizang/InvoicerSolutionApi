@@ -1,6 +1,12 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using dotenv.net;
+using InvoicerApi.Data;
+
+DotEnv.Load();
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.LightUpDataLayer(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -1,3 +1,4 @@
+using InvoicerApi.Data.TypeConfiguration;
 using InvoicerApi.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -11,8 +12,14 @@ public class InvoicerApiContext : IdentityDbContext<ApplicationUser>
         
     }
 
+    protected InvoicerApiContext()
+    {
+        
+    }
+
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        builder.ApplyConfigurationsFromAssembly(typeof(PlatformInvoiceTypeConfiguration).Assembly);
         base.OnModelCreating(builder);
     }
 
