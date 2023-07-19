@@ -1,12 +1,17 @@
 ﻿using dotenv.net;
 using InvoicerApi.Data;
+using Microsoft.EntityFrameworkCore;
 
 DotEnv.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.LightUpDataLayer(builder.Configuration);
+var connectionString = builder.Configuration.GetConnectionString("MYSQL_CONNECTION_STRING") ?? string.Empty;
+builder.Services.AddDbContextPool<InvoicerApiContext>(options =>
+{
+    options.UseMySQL(connectionString);
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

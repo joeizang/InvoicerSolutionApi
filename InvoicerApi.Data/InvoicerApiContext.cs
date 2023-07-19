@@ -12,7 +12,12 @@ public class InvoicerApiContext : IdentityDbContext<ApplicationUser>
         
     }
 
-    protected InvoicerApiContext()
+    public InvoicerApiContext() : base()
+    {
+        
+    }
+
+    public InvoicerApiContext(DbContextOptionsBuilder<InvoicerApiContext> optionsBuilder)
     {
         
     }
