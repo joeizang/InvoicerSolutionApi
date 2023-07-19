@@ -32,7 +32,7 @@ public class PlatformInvoice : BaseModel
     
     public ApplicationUser User { get; set; } = default!;
     
-    public Guid UserId { get; set; }
+    public string UserId { get; set; }
 
     public PlatformInvoice()
     {

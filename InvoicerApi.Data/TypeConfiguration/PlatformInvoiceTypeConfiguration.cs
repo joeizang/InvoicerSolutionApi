@@ -21,7 +21,6 @@ public class PlatformInvoiceTypeConfiguration : IEntityTypeConfiguration<Platfor
             .IsRequired(false);
         builder.Property(x => x.Quantity).IsRequired();
         
-        builder.Property(x => x.TotalSum).IsRequired();
         builder.OwnsOne(x => x.TotalSum, y =>
         {
             y.Property(x => x.Amount)
@@ -29,8 +28,7 @@ public class PlatformInvoiceTypeConfiguration : IEntityTypeConfiguration<Platfor
                 .IsRequired();
             y.Property(x => x.Currency).IsRequired();
         });
-
-        builder.Property(x => x.TaxAmount).IsRequired();
+        
         builder.OwnsOne(x => x.TaxAmount, y =>
         {
             y.Property(x => x.Amount)
@@ -40,7 +38,7 @@ public class PlatformInvoiceTypeConfiguration : IEntityTypeConfiguration<Platfor
         });
         builder.Property(x => x.TaxCategory).IsRequired();
         builder.Property(x => x.OfferDiscount).IsRequired();
-        builder.Property(x => x.DiscountAmount).IsRequired();
+
         builder.OwnsOne(x => x.DiscountAmount, y =>
         {
             y.Property(x => x.Amount)

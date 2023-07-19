@@ -12,15 +12,11 @@ public class InvoicerApiContext : IdentityDbContext<ApplicationUser>
         
     }
 
-    public InvoicerApiContext() : base()
+    public InvoicerApiContext()
     {
         
     }
 
-    public InvoicerApiContext(DbContextOptionsBuilder<InvoicerApiContext> optionsBuilder)
-    {
-        
-    }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

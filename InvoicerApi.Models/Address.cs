@@ -12,7 +12,7 @@ public class Address : BaseModel
 
     public ApplicationUser User { get; set; } = default!;
 
-    public Guid UserId { get; set; }
+    public string UserId { get; set; }
     
     public string FullAddress => $"{Street}, {City}, {ZipCode}, {Country}";
 }

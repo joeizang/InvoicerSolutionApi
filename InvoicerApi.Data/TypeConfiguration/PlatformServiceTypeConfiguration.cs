@@ -10,7 +10,7 @@ public class PlatformServiceTypeConfiguration : IEntityTypeConfiguration<Platfor
     {
         builder.OwnsOne(x => x.Price, build =>
         {
-            build.Property(x => x.Amount).HasPrecision(2);
+            build.Property(x => x.Amount).HasPrecision(2).IsRequired();
         });
         
         builder.HasOne(x => x.PlatformInvoice)
