@@ -1,7 +1,7 @@
 using InvoicerApi.Models.ApiModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace InvoicerApi.Data;
+namespace InvoicerApi.Data.CompiledQueries;
 
 public class UserInvoiceQueries
 {

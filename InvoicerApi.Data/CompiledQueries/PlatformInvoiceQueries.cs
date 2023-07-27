@@ -17,10 +17,11 @@ public class PlatformInvoiceQueries
                     .Where(x => x.UserId.Equals(userId))
                     .OrderBy(x => x.InvoiceIssueDate)
                     .Skip(pageSize * (pageNumber - 1))
-                    .Select(x => new PlatformInvoiceApiModel(x.Id, x.InvoiceIssueDate, x.TotalSum, x.TaxAmount,
-                      x.TaxCategory, x.DiscountAmount, x.PlatformInvoiceNumber, x.PlatformInvoiceStatus, x.UserId,
-                      x.User.Email, x.PlatformServices.Select(p => new PlatformServiceApiModel(p.Name, p.Id, p.Price,
-                        p.Description)
+                    .Select(x => new PlatformInvoiceApiModel(x.Id, x.InvoiceIssueDate, x.TotalSum, 
+                            x.TaxAmount, x.TaxCategory, x.DiscountAmount, x.PlatformInvoiceNumber,
+                            x.PlatformInvoiceStatus, x.UserId, x.User.Email,
+                            x.PlatformServices.Select(p => new PlatformServiceApiModel(p.Name, 
+                                p.Id, p.Price, p.Description)
                       )
                       )
                     ).Take(10)
@@ -33,10 +34,11 @@ public class PlatformInvoiceQueries
                 context.PlatformInvoices.AsNoTracking()
                     .Where(x => x.UserId.Equals(userId) && x.PlatformInvoiceStatus == InvoiceStatus.Sent)
                     .OrderBy(x => x.InvoiceIssueDate)
-                    .Select(x => new PlatformInvoiceApiModel(x.Id, x.InvoiceIssueDate, x.TotalSum, x.TaxAmount,
-                        x.TaxCategory, x.DiscountAmount, x.PlatformInvoiceNumber, x.PlatformInvoiceStatus, x.UserId,
-                        x.User.Email, x.PlatformServices.Select(p => new PlatformServiceApiModel(p.Name, p.Id, p.Price,
-                            p.Description)
+                    .Select(x => new PlatformInvoiceApiModel(x.Id, x.InvoiceIssueDate, x.TotalSum,
+                            x.TaxAmount, x.TaxCategory, x.DiscountAmount, x.PlatformInvoiceNumber,
+                            x.PlatformInvoiceStatus, x.UserId, x.User.Email,
+                            x.PlatformServices.Select(p => new PlatformServiceApiModel(p.Name,
+                                p.Id, p.Price, p.Description)
                         )
                         )
                     ).Skip(pageSize * (pageNumber - 1))
@@ -51,10 +53,11 @@ public class PlatformInvoiceQueries
                     .Where(x => x.UserId.Equals(userId) && x.PlatformInvoiceStatus == InvoiceStatus.Sent)
                     .OrderBy(x => x.InvoiceIssueDate)
                     .ThenBy(x => x.TotalSum.Amount)
-                    .Select(x => new PlatformInvoiceApiModel(x.Id, x.InvoiceIssueDate, x.TotalSum, x.TaxAmount,
-                        x.TaxCategory, x.DiscountAmount, x.PlatformInvoiceNumber, x.PlatformInvoiceStatus, x.UserId,
-                        x.User.Email, x.PlatformServices.Select(p => new PlatformServiceApiModel(p.Name, p.Id, p.Price,
-                            p.Description)
+                    .Select(x => new PlatformInvoiceApiModel(x.Id, x.InvoiceIssueDate, x.TotalSum, 
+                            x.TaxAmount, x.TaxCategory, x.DiscountAmount, x.PlatformInvoiceNumber,
+                            x.PlatformInvoiceStatus, x.UserId, x.User.Email,
+                            x.PlatformServices.Select(p => new PlatformServiceApiModel(p.Name,
+                                p.Id, p.Price, p.Description)
                         )
                         )
                     ).Skip(pageSize * (pageNumber - 1))
